@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>NavGenerator.js</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="static/style.css">
+    <link type="text/css" rel="stylesheet" href="static/prism.css">
+</head>
+<body class="api">
+<div class="main-content">
+    <div class="container bloc">
+        <div class="title-bloc"><h1>NavGenerator <span class="api-version">V0.0.1</span></h1></div>
+        <h2>options</h2>
+        <p>All the global options available.</p>
+        <table class="api-list">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Default</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>title</td>
+                <td>/</td>
+                <td>String</td>
+                <td>The title of the navbar.
+                </td>
+            </tr>
+            <tr>
+                <td>navItems<span class="required">(required)</span>
+                </td>
+                <td>[]</td>
+                <td>Array[Item]</td>
+                <td>This is the array to store the nav items.
+                </td>
+            </tr>
+            <tr>
+                <td>style
+                </td>
+                <td>/</td>
+                <td>String</td>
+                <td>This is custom css applied to the navbar.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container bloc"><h2>options.navItems</h2>
+        <p>All the information available for each nav item.</p>
+        </p>
+        <table class="api-list">
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Item</td>
+                </td>
+                <td>You can set the nav items in two ways:<br><strong>1. The simple way</strong>, you can only set one
+                    level to the navbar, e.g.
+                    <pre><code class="language-js">[{
+     name: "intro",
+     url: "/intro"
+},
+{
+     name: "buy",
+     url: "/buy"
+}]</code></pre>
+                    <strong>2. The complex way</strong>, you can set first level with the child items to the navbar,
+                    e.g.
+                    <pre><code class=" language-js">[{
+     name: "Home",
+     url: "/",
+     children: [{
+         name: "intro",
+         url: "/intro"
+     },
+     {
+         name: "buy",
+         url: "/buy"
+     }]
+},
+{
+     name: "About",
+     url: "/about",
+}]</code></pre>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="container bloc"><h2>Methods</h2>
+        <p>Methods to control the navbar.</p>
+        <pre class="language-js"><code class="language-js">/**
+  * to add new nav item
+  *
+  * @param name {string} example: "Home"
+  * @param url {string} example: https://www.google.com
+  * @param children {array} example: [{name: "", url: ""}]
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.addBar(name, url, children);
+
+/**
+  * set the navbar vertical
+  *
+  */
+NavGeneratorInstance.setVertical();
+
+/**
+  * set the navbar horizontal
+  *
+  */
+NavGeneratorInstance.setHorizontal();
+
+/**
+  * set the menu line style
+  *
+  *  @param {string} style example: "solid" or "dotted" or "dashed" or "none"
+  */
+NavGeneratorInstance.setLineStyle(style);
+
+/**
+  * set the navbar background color
+  *
+  * @param color {string} example: #fff
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.setBackgroundColor(color);
+
+/**
+  * set the navbar title
+  *
+  * @param title {string} example: "Title"
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.setTitle(title);
+
+
+/**
+  * delete the item from the navbar
+  *
+  * @param {string} name
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.deleteItem(name);
+
+/**
+  * set the menu background color
+  *
+  * @param {string} color example: #fff
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.setMenuBackgroundColor(color);
+
+/**
+  * set the menu border radius
+  *
+  * @param {string} radius  example: "5px"
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.setMenuBorderRadius(radius);
+
+/**
+  * get the navbar item list
+  *
+  * @returns {Array}
+  */
+NavGeneratorInstance.getNavItems();
+
+/**
+  * remove the title
+  *
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.removeTitle();
+
+/**
+  * add a new menu item to the navbar item list
+  *
+  * @param targetName {string}
+  * @param name {string}
+  * @param url {string}
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.addItem(name, url, children);
+
+
+/**
+  * set the item color by name
+  *
+  * @param name {string} example: "Home"
+  * @param color {string} example: #fff
+  */
+NavGeneratorInstance.setItemColorByName(name, color);
+
+/**
+  * set all the navbar item color
+  *
+  * @param color {string} example: #fff
+  */
+NavGeneratorInstance.setNavItemColor(color);
+
+
+/**
+  * set all the menu item color
+  *
+  * @param color {string} example: #fff
+  */
+NavGeneratorInstance.setMenuItemColor(color);
+
+
+/**
+  * remove the item from the navbar item list
+  *
+  * @param name {string}
+  * @returns {NavGenerator}
+  */
+NavGeneratorInstance.removeItem(name);</code></pre>
+    </div>
+    <div class="container bloc"><h2>Complete configuration demo</h2>
+        <p>First, you should include the javascript file in the html.</p>
+        <pre> <code class="language-html">&lt;script defer type="text/javascript" src='js/library.js'&gt;&lt;/script&gt;
+ &lt;link type="text/css" rel="stylesheet" href="css/library.css"&gt;</code></pre>
+        <p>Second, you should create a html element with an id.</p>
+        <pre> <code class="language-html">&lt;div id="navbar1"&gt;&lt;/div&gt;</code></pre>
+        <p>Complete configuration with two levels, you can test it in pub/js/example.js</p>
+        <pre class="language-js"><code class="language-js">const ng = new NavGenerator("navbar1", {
+    navItems: [
+        {
+            name: "Home",
+            url: "/",
+            children: [
+                {
+                    name: "intro",
+                    url: "/intro"
+                },
+                {
+                    name: "buy",
+                    url: "/buy"
+                },
+                {
+                    name: "sell",
+                    url: "/sell"
+                },
+                {
+                    name: "rent",
+                    url: "/rent"
+                }
+            ]
+        },
+        {
+            name: "About",
+            url: "/about",
+        },
+        {
+            name: "Contact",
+            url: "/contact",
+            children: [
+                {
+                    name: "email",
+                    url: "/email"
+                },
+                {
+                    name: "phone",
+                    url: "/phone"
+                },
+                {
+                    name: "address",
+                    url: "/address"
+                }
+            ]
+        }
+    ],
+    title: "Nav Generator",
+});
+
+// add a bar to the navbar
+ng.addBar("hhhh", "/asd", [{
+    name: "asd",
+    url: "/asd"
+}]);
+
+// set the navbar background color
+ng.setBackgroundColor("#ffffee");
+
+// set the menu border radius
+ng.setMenuBorderRadius("10px");
+
+// delete a item from the navbar
+ng.deleteItem("phone");
+
+// add a menu item to the navbar
+ng.addMenuItem("Contact","twitter", "/twitter");
+
+// set the menu title
+ng.setTitle("Test Tittle");
+
+
+// set the menu background color
+ng.setMenuBackgroundColor("#feb373");
+
+// set the nav item font color
+ng.setNavItemColor("green");
+
+// set the menu item font color
+ng.setMenuItemColor("blue");
+
+// set a item font color
+ng.setItemColorByName("address", "red");
+
+// remove the item from the navbar
+ng.removeItem("Contact");
+
+// set the navbar vertical
+ng.setVertical();
+
+// set the menu line style
+ng.setMenuLineStyle("dashed");</code></pre>
+    </div>
+</div>
+<script src="static/prism.js"></script>
+</body>
+</html>
